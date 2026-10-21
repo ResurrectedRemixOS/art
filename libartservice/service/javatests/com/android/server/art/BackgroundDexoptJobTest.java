@@ -239,7 +239,7 @@ public class BackgroundDexoptJobTest {
         JobInfo jobInfo = captor.getValue();
         assertThat(jobInfo.getId()).isEqualTo(BG_DEXOPT.getJobId());
         assertThat(jobInfo.getIntervalMillis()).isEqualTo(BackgroundDexoptJob.JOB_INTERVAL_MS);
-        assertThat(jobInfo.isRequireDeviceIdle()).isTrue();
+        assertThat(jobInfo.isRequireDeviceIdle()).isFalse();
         assertThat(jobInfo.isRequireCharging()).isTrue();
         assertThat(jobInfo.isRequireBatteryNotLow()).isTrue();
         assertThat(jobInfo.isRequireStorageNotLow()).isFalse();
@@ -270,7 +270,7 @@ public class BackgroundDexoptJobTest {
 
         JobInfo jobInfo = captor.getValue();
         assertThat(jobInfo.getIntervalMillis()).isEqualTo(BackgroundDexoptJob.JOB_INTERVAL_MS);
-        assertThat(jobInfo.isRequireDeviceIdle()).isTrue();
+        assertThat(jobInfo.isRequireDeviceIdle()).isFalse();
         assertThat(jobInfo.isRequireCharging()).isTrue();
         assertThat(jobInfo.isRequireBatteryNotLow()).isFalse();
         assertThat(jobInfo.getPriority()).isEqualTo(JobInfo.PRIORITY_LOW);

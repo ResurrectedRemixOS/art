@@ -189,7 +189,9 @@ public class BackgroundDexoptJob implements ArtServiceJobInterface {
                         .setRequiresBatteryNotLow(true);
 
         if (jobType == JobType.BG_DEXOPT) {
-            builder.setRequiresDeviceIdle(true).setPeriodic(JOB_INTERVAL_MS);
+            // Idle means the screen has been off. Waiting for that leaves every
+            // cold start interpreted for the whole time the phone is in use.
+            builder.setPeriodic(JOB_INTERVAL_MS);
 
             Callback<ScheduleBackgroundDexoptJobCallback, Void> callback =
                     mInjector.getConfig().getScheduleBackgroundDexoptJobCallback();
